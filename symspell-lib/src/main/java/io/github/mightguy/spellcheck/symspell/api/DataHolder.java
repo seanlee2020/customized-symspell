@@ -16,6 +16,8 @@ public interface DataHolder {
 
   public Double getItemFrequencyBiGram(String term) throws SpellCheckException;
 
+  public Double getItemFrequencyTriGram(String term) throws SpellCheckException;
+
   public String[] getDeletes(String key) throws SpellCheckException;
 
   public int getSize();

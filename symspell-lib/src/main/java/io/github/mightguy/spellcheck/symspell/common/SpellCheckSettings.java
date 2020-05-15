@@ -90,6 +90,10 @@ public class SpellCheckSettings {
   @Builder.Default
   private double bigramCountMin = Double.MAX_VALUE;
 
+
+  @Setter
+  @Builder.Default
+  private double trigramCountMin = Double.MAX_VALUE;
   /**
    * Ignore the word in resultset, if suggestions are empty
    */

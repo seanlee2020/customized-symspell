@@ -28,6 +28,11 @@ public class SuggestionItem implements Comparator<SuggestionItem>, Comparable<Su
    */
   private double count;
 
+
+  private String metaphoneCode;
+
+  private boolean sameMetaphoneCode;
+
   /**
    * COnstructor  for SuggestionItem
    * @param term
@@ -50,10 +55,22 @@ public class SuggestionItem implements Comparator<SuggestionItem>, Comparable<Su
    */
   @Override
   public int compareTo(SuggestionItem other) {
-    if (SpellHelper.isEqualDouble(this.distance, other.distance, 0.001f)) {
-      return Double.compare(other.count, this.count);
-    }
-    return Double.compare(this.distance, other.distance);
+
+    if (this.distance == 0)
+      return -1;
+    else if (other.distance == 0)
+      return 1;
+
+   // if (SpellHelper.isEqualDouble(this.distance, other.distance, 0.001f)) {
+
+      if (SpellHelper.isEqualDouble(this.score, other.score, 0.0000000001f))
+      {
+        return Double.compare(other.count, this.count);
+      }
+      return Double.compare(other.score/Math.pow(100, other.distance), this.score/Math.pow(100, this.distance));
+
+   // }
+  //  return Double.compare(this.distance, other.distance);
   }
 
   @Override
